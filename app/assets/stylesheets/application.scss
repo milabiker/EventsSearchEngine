@@ -1,3 +1,30 @@
 @import "foundation_and_overrides";
 /* Add imports of custom sass/scss files here */
  //= require foundation_and_overrides
+
+.main-page-content{
+	background-color: rgba(255,255,255,0.2);
+}
+body{
+	font-color:#ddd;
+}
+.map_container{
+	width:100%;
+	height:100%;
+	position: relative;
+}
+.map-bg{
+	background-image: url("/assets/map_icon.png");
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-size: 60% auto;
+}
+
+.map_image{
+	position:relative;
+	top:20%;
+	right:0%;
+	float:right;
+	border:1px solid green;
+	width:80%;
+}
