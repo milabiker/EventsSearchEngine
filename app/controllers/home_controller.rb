@@ -4,4 +4,8 @@ class HomeController < ApplicationController
 
   def map
   end
+
+  def add
+
+  end
 end
