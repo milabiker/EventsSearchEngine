@@ -840,7 +840,7 @@
 //
 
 // We use these to control margin and padding
-// $sub-nav-list-margin: emCalc(-4px) 0 emCalc(18px);
+//$sub-nav-list-margin: emCalc(-4px) 0 emCalc(18px);
 // $sub-nav-list-padding-top: emCalc(4px);
 
 // We use this to control the definition
@@ -972,7 +972,7 @@
 
 // Height and margin
 // $topbar-height: 45px;
-// $topbar-margin-bottom: emCalc(30px);
+ $topbar-margin-bottom: emCalc(0px);
 
 // Control Input height for top bar
 // $topbar-input-height: 2.45em;
