@@ -10,7 +10,7 @@
     <div class="large-6 columns">
       <div class="row collapse">
         <div class="small-10 columns">
-          <input type="text" placeholder="FaceBook event link">
+          <%= text_field 'event_id', nil, :placeholder => 'Enter facebook event id here...' %> 
         </div>
         <div class="small-2 columns">
           <%= submit_tag("Add", class:"button prefix") %>

@@ -7,6 +7,7 @@ FbEvents::Application.routes.draw do
   root 'home#index'
   get "home/map"
   post "home/add"
+  get 'events', :controller => 'events', :action => 'show'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
