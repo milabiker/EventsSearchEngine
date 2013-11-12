@@ -2,9 +2,15 @@
 mapHeight = $(document).height();
 console.log("body  = " + mapHeight);
 $(function(){
-console.log("mapHeight = " + (mapHeight - $('nav.top-bar').height()));
+console.log("mapHeight = " + (mapHeight ));
+console.log("nav.top-bar = " + $('nav.top-bar').height());
+console.log("section title" +  $('section p.title').height());
 });
-$('#map').css('height', mapHeight - $('div.top-bar').height());
+$('#map').css('height', mapHeight -30 - $('nav.top-bar').height() - $('section p.title').height());
+console.log("map = " + $('#map').height());
+
+
+
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {zoom: 19},internal: {id: 'map'}}, function(){
   markers = handler.addMarkers([
