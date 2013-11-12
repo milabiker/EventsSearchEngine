@@ -10,7 +10,17 @@ class HomeController < ApplicationController
     respond_to do |format|
       @markers = Event.find(:all)
       format.xml { render :xml => @markers.to_xml( :only => [:lat, :lon, :description]) }
+      format.json { render :json => @markers.to_json( :only => [:lat, :lon, :description]) }
     end
+  end
+
+  def clean
+    @events = Event.find(:all)
+    for event in @events
+      event.destroy
+    end
+
+    redirect_to "/home/map/"
   end
 
   def add

@@ -9,6 +9,7 @@ FbEvents::Application.routes.draw do
   post "home/add"
   get 'events', :controller => 'events', :action => 'show'
   get 'markers', :controller => 'home', :action => 'markers'
+  get 'clean', :controller => 'home', :action => 'clean'
   get 'auth/:provider/callback' => 'sessions#create'
   get 'auth/failure' => redirect('/')
   get 'signout' => 'sessions#destroy', as: 'signout'
