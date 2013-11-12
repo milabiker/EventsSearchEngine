@@ -2,6 +2,8 @@
 /* Add imports of custom sass/scss files here */
  //= require foundation_and_overrides
 
+/* body background #1795E8 */
+
 .main-page-content{
 	background-color: rgba(255,255,255,0.2);
 }
@@ -31,4 +33,9 @@ body{
 #map{
 	width:100%;
 	height: 600px;
+}
+.add-form-slider {
+}
+.add-form-content{
+	float:left;
 }

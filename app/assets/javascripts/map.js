@@ -12,9 +12,13 @@ function showMap(markers_data) {
 mapHeight = $(document).height();
 console.log("body  = " + mapHeight);
 $(function(){
-console.log("mapHeight = " + (mapHeight - $('nav.top-bar').height()));
+console.log("mapHeight = " + (mapHeight ));
+console.log("nav.top-bar = " + $('nav.top-bar').height());
+console.log("section title" +  $('section p.title').height());
 });
-$('#map').css('height', mapHeight - $('div.top-bar').height());
+
+$('#map').css('height', mapHeight -30 - $('nav.top-bar').height() - $('section p.title').height());
+console.log("map = " + $('#map').height());
 
 $.getJSON( "/markers.json", function( data ) {
   var markers = new Array();
@@ -32,4 +36,3 @@ $.getJSON( "/markers.json", function( data ) {
   });
 
   showMap(markers);
-});
