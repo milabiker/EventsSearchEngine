@@ -3,6 +3,14 @@ class HomeController < ApplicationController
   end
 
   def map
+    render(:locals => {:data => "/markers.xml"}) 
+  end
+
+  def markers
+    respond_to do |format|
+      @markers = Event.find(:all)
+      format.xml { render :xml => @markers.to_xml( :only => [:lat, :lon, :description]) }
+    end
   end
 
   def add

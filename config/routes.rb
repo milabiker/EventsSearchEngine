@@ -8,6 +8,7 @@ FbEvents::Application.routes.draw do
   get "home/map"
   post "home/add"
   get 'events', :controller => 'events', :action => 'show'
+  get 'markers', :controller => 'home', :action => 'markers'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
