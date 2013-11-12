@@ -9,6 +9,10 @@ FbEvents::Application.routes.draw do
   post "home/add"
   get 'events', :controller => 'events', :action => 'show'
   get 'markers', :controller => 'home', :action => 'markers'
+  get 'auth/:provider/callback' => 'sessions#create'
+  get 'auth/failure' => redirect('/')
+  get 'signout' => 'sessions#destroy', as: 'signout'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

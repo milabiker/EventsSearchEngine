@@ -10,6 +10,9 @@ gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
+gem 'omniauth'
+gem 'omniauth-facebook', '1.4.0'
+
 
 #Foundation framework
 gem 'compass-rails', '~> 2.0.alpha.0'
