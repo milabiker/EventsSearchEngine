@@ -36,3 +36,4 @@ $.getJSON( "/markers.json", function( data ) {
   });
 
   showMap(markers);
+});
