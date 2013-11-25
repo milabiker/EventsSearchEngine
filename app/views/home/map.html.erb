@@ -15,7 +15,17 @@
   <section>
     <p class="title" data-section-title><a href="panel3"> Search</a></p>
     <div class="content" data-section-content>
-      <h3> Under construction.. </h3>
+      <h3> Specify your criteria: </h3>
+      <div class="row">
+        <div class="large-4 columns">
+        <%= form_tag({controller: "home", action: "search"} , method: "post") do %>
+          <label for="category"> Category </label>
+          <%= select_tag("category", 
+            options_from_collection_for_select(@cats, 'id', 'name')) %>
+        <% end %>
+        </div>
+
+      </div>
     </div>
   </section>
   <section>
@@ -29,13 +39,16 @@
               <div class="row collapse">
                 <div class="small-10 columns">
                   <%= text_field 'event_id', nil, :placeholder => 'Enter facebook event id here...' %> 
+                  <label for="category1"> Category </label>
+                  <%= select_tag("category1", 
+                    options_from_collection_for_select(@cats, 'id', 'name')) %>
                 </div>
                 <div class="small-2 columns">
                   <%= submit_tag("Add", class:"button prefix") %>
                 </div>
               </div>
+            <% end %>
           </div>
-        <% end %>
         </div>
       </div>
     </div>
