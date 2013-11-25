@@ -1,8 +1,11 @@
 class HomeController < ApplicationController
   def index
+    @cats = Category.find(:all)
+
   end
 
   def map
+    @cats = Category.find(:all)
     render(:locals => {:data => "/markers.xml"}) 
   end
 
