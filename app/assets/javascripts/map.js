@@ -31,7 +31,9 @@ $.getJSON( "/markers.json", function( data ) {
   };
 
   $.each( data, function( key, val ) {
-    markers[i] = { "infowindow" : val.description, "lat" : val.lat, "lng" : val.lon, "picture" : picture };
+    var temp_description = val.description
+    var cloud_content = "<b>" + val.title + "</b><br>" + val.description.substring(0,50) + "...<br><a href = \"https://www.facebook.com/events/" + val.event_id + "\" target=\"_blank\"> więcej... </a>"
+    markers[i] = { "infowindow" : cloud_content, "lat" : val.lat, "lng" : val.lon, "picture" : picture };
     i++;
   });
 

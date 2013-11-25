@@ -9,8 +9,8 @@ class HomeController < ApplicationController
   def markers
     respond_to do |format|
       @markers = Event.find(:all)
-      format.xml { render :xml => @markers.to_xml( :only => [:lat, :lon, :description]) }
-      format.json { render :json => @markers.to_json( :only => [:lat, :lon, :description]) }
+      format.xml { render :xml => @markers.to_xml( :only => [:attending, :event_id, :title, :lat, :lon, :description]) }
+      format.json { render :json => @markers.to_json( :only => [:attending, :event_id, :title, :lat, :lon, :description]) }
     end
   end
 
