@@ -41,6 +41,7 @@ class HomeController < ApplicationController
     event_data_result = JSON.parse(open(event_data_url).read)
 
   	@event = Event.new
+    @event.event_id = event_id
   	@event.title = event_data_result['name']
   	@event.owner = event_data_result['owner']['name']
   	@event.description = event_data_result['description']
