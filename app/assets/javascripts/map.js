@@ -24,14 +24,25 @@ $.getJSON( "/markers.json", function( data ) {
   var markers = new Array();
   var i = 0;
 
-  var picture = {
-    "url": "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
-    "width":  36,
-    "height": 36
-  };
-
   $.each( data, function( key, val ) {
-    markers[i] = { "infowindow" : val.description, "lat" : val.lat, "lng" : val.lon, "picture" : picture };
+    var picture_url =  "/assets/marker_0.png";
+    var attending = parseInt(val.attending);
+
+    if( attending > 200 ) {
+      picture_url = "/assets/marker_600.png";
+    } else if ( attending > 100 ) {
+      picture_url = "/assets/marker_300.png";
+    }
+
+    var picture = {
+      "url": picture_url,
+      "width":  28,
+      "height": 40
+    };
+
+    var temp_description = val.description
+    var cloud_content = "<b>" + val.title + "</b><br>" + val.description.substring(0,50) + "...<br><a href = \"https://www.facebook.com/events/" + val.event_id + "\" target=\"_blank\"> więcej... </a>"
+    markers[i] = { "infowindow" : cloud_content, "lat" : val.lat, "lng" : val.lon, "picture" : picture };
     i++;
   });
 

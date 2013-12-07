@@ -9,6 +9,7 @@ FbEvents::Application.routes.draw do
   root 'home#index'
   get "home/map"
   post "home/add"
+  post "home/search"
   get 'events', :controller => 'events', :action => 'show'
   get 'markers', :controller => 'home', :action => 'markers'
   get 'clean', :controller => 'home', :action => 'clean'

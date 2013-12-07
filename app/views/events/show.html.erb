@@ -3,12 +3,13 @@
 </head>
 <body>
 <table>
-<tr><td>ID</td><td>title</td><td>description</td><td>owner</td><td>lat</td><td>lon</td><td>attendings</td></tr>
+<tr><td>ID</td><td>title</td><td>category</td><td>description</td><td>owner</td><td>lat</td><td>lon</td><td>attendings</td></tr>
 
 <% for event in @events %>
 	<tr>
 		<td><%= event.event_id %></td>
 		<td><%= event.title %></td>
+		<td><%= event.category.name %></td>
 		<td><%= event.description %></td>
 		<td><%= event.owner %></td>
 		<td><%= event.lat %></td>
