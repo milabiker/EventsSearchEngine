@@ -17,6 +17,7 @@ gem 'omniauth-facebook', '1.4.0'
 #Foundation framework
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'zurb-foundation', '~> 4.0.0'
+gem 'foundation-datetimepicker-rails'
 
 gem 'gmaps4rails'
 gem 'protected_attributes'

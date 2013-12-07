@@ -12,6 +12,7 @@
       <div id='map' data-section-content> </div>
     </div>
   </section>
+  <!-- ======================== Search section =================== -->
   <section>
     <p class="title" data-section-title><a href="panel3"> Search</a></p>
     <div class="content" data-section-content>
@@ -22,12 +23,19 @@
           <label for="category"> Category </label>
           <%= select_tag("category", 
             options_from_collection_for_select(@cats, 'id', 'name')) %>
+          <label for="range"> Radius </label>
+          <%= text_field 'range', nil, :placeholder => 'Specify range (km)' %>
+          <div class="search_datepicker">
+            <input type="text" class="span2" value="02/16/12" data-date-format="mm/dd/yy" id="dp-margin">
+           </div>
         <% end %>
         </div>
 
       </div>
     </div>
   </section>
+    <!-- ======================== Add section =================== -->
+
   <section>
     <p class="title" data-section-title><a href="#panel2">Add</a></p>
     <div class="content" data-section-content>

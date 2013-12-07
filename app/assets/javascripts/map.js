@@ -37,3 +37,7 @@ $.getJSON( "/markers.json", function( data ) {
 
   showMap(markers);
 });
+
+/* ---- Date pickers ---- */
+
+$('.search_datepicker').fdatepicker('show')

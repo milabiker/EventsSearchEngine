@@ -17,6 +17,8 @@
 //= require foundation
 //= require underscore-min
 //= require gmaps/google
+//= require foundation-datetimepicker
+
 $(function(){
 	$(document).foundation();
 	
