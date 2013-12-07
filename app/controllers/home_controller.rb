@@ -37,6 +37,7 @@ class HomeController < ApplicationController
     access_token = access_token_parts[1]
 
     event_id = params[:event_id][0]
+
     members_url = URI.escape("https://graph.facebook.com/#{event_id}/attending?access_token=#{access_token}")
     members_result = JSON.parse(open(members_url).read)
 
