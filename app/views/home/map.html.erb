@@ -22,6 +22,9 @@
           <label for="category"> Category </label>
           <%= select_tag("category", 
             options_from_collection_for_select(@cats, 'id', 'name')) %>
+          <div class="small-2">
+            <%= submit_tag("Save", class:"button prefix") %>
+          </div>
         <% end %>
         </div>
 

@@ -11,7 +11,29 @@ class HomeController < ApplicationController
 
   def markers
     respond_to do |format|
-      @markers = Event.find(:all)
+      search_category = session[:search_category]
+      search_lat = session[:search_lat]
+      search_lon = session[:search_lon]
+      search_distance = session[:search_distance]
+
+      @markers = Event.all
+      if search_category != nil
+        #markers filtering by category
+        @markers = Event.where(category_id: search_category)
+        
+        #markers filtering by distance from point
+        if (search_lat != nil) && (search_lon != nil) & (search_distance != nil)
+          filtered_markers = []
+
+          @markers.each do |marker|
+            if is_in_region(marker.lat, marker.lon, search_lat, search_lon, search_distance)
+              filtered_markers += [marker]
+            end
+          end
+          @markers = filtered_markers
+        end
+      end
+      
       format.xml { render :xml => @markers.to_xml( :only => [:attending, :event_id, :title, :lat, :lon, :description]) }
       format.json { render :json => @markers.to_json( :only => [:attending, :event_id, :title, :lat, :lon, :description]) }
     end
@@ -22,6 +44,20 @@ class HomeController < ApplicationController
     for event in @events
       event.destroy
     end
+
+    redirect_to "/home/map/"
+  end
+
+  def search
+    category_id = params[:category]
+    lat = 51.75424
+    lon = 19.398193
+    distance = 120
+
+    session[:search_category] = category_id
+    session[:search_lat] = lat
+    session[:search_lon] = lon
+    session[:search_distance] = distance
 
     redirect_to "/home/map/"
   end
@@ -56,5 +92,35 @@ class HomeController < ApplicationController
     @event.category_id = category_id
   	@event.save
   	redirect_to "/home/map/"
+  end
+
+  RAD_PER_DEG = 0.017453293  #  PI/180
+  Rkm = 6371
+  def is_in_region( lat1, lon1, lat2, lon2, distance )
+    
+
+    dlon = lon2 - lon1
+    dlat = lat2 - lat1
+
+    dlon_rad = dlon * RAD_PER_DEG 
+    dlat_rad = dlat * RAD_PER_DEG
+
+    lat1_rad = lat1 * RAD_PER_DEG
+    lon1_rad = lon1 * RAD_PER_DEG
+
+    lat2_rad = lat2 * RAD_PER_DEG
+    lon2_rad = lon2 * RAD_PER_DEG
+
+
+    a = (Math.sin(dlat_rad/2))**2 + Math.cos(lat1_rad) * Math.cos(lat2_rad) * (Math.sin(dlon_rad/2))**2
+    c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a))
+
+    dKm = Rkm * c
+
+    if dKm > distance
+      return false
+    else
+      return true
+    end
   end
 end
