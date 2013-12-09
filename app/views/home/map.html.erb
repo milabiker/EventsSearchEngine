@@ -22,8 +22,14 @@
           <label for="category"> Category </label>
           <%= select_tag("category", 
             options_from_collection_for_select(@cats, 'id', 'name')) %>
+          <label for="search_event"> Search Address </label>
+          <%= text_field 'search_address', nil, :placeholder => 'Enter adress...' %> 
+          <label for="search_range"> Search Range [km] </label>
+          1<input id="search_range_slider" type="range" name="search_range" min="1" max="100" value="0">100
+          
+          <p id="range_label"> 1 </p>
           <div class="small-2">
-            <%= submit_tag("Save", class:"button prefix") %>
+            <%= submit_tag("Search", class:"button prefix") %>
           </div>
         <% end %>
         </div>

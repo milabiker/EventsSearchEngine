@@ -47,4 +47,8 @@ $.getJSON( "/markers.json", function( data ) {
   });
 
   showMap(markers);
+
+  $('#search_range_slider').change(function(){
+    $('#range_label').text(this.value);
+  })
 });
