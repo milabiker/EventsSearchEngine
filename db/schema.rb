@@ -19,8 +19,19 @@ ActiveRecord::Schema.define(version: 20131207122824) do
     t.datetime "updated_at"
   end
 
-# Could not dump table "events" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "events", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "owner"
+    t.float    "lat"
+    t.float    "lon"
+    t.datetime "date"
+    t.integer  "attending"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "event_id"
+    t.integer  "category_id"
+  end
 
   create_table "users", force: true do |t|
     t.string   "provider"
