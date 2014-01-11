@@ -14,20 +14,28 @@
   </section>
   <!-- ======================== Search section =================== -->
   <section>
-    <p class="title" data-section-title><a href="panel3"> Search</a></p>
+    <p class="title" data-section-title><a href="#panel3"> Search</a></p>
     <div class="content" data-section-content>
       <h3> Specify your criteria: </h3>
       <div class="row">
         <div class="large-4 columns">
         <%= form_tag({controller: "home", action: "search"} , method: "post") do %>
-          <label for="category"> Category </label>
+          <label for="category"><h6> Category </h6></label>
           <%= select_tag("category", 
             options_from_collection_for_select(@cats, 'id', 'name')) %>
-          <label for="range"> Radius </label>
+
+          <label for="range"><h6> Radius </h6></label>
           <%= text_field 'range', nil, :placeholder => 'Specify range (km)' %>
+          <label for="search-date"><h6> Date </h6> </label>
           <div class="search_datepicker">
-            <input type="text" class="span2" value="02/16/12" data-date-format="mm/dd/yy" id="dp-margin">
+            <input type="text" class="span2" value="" data-date-format="dd/mm/yyyy" id="search-date">
            </div>
+
+          <label for="search_event"><h6> Search Address </h6></label>
+          <%= text_field 'search_address', nil, :placeholder => 'Enter adress...' %> 
+          <div class="small-2">
+            <%= submit_tag("Search", class:"button ") %>
+          </div>
         <% end %>
         </div>
 
@@ -62,6 +70,7 @@
     </div>
   </section>
 </div>
+
 <!-- 
 <div class="row add-form-slider">
   <div class="add-form-icon">

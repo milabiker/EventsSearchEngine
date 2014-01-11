@@ -40,8 +40,9 @@ $.getJSON( "/markers.json", function( data ) {
       "height": 40
     };
 
-    var temp_description = val.description
-    var cloud_content = "<b>" + val.title + "</b><br>" + val.description.substring(0,50) + "...<br><a href = \"https://www.facebook.com/events/" + val.event_id + "\" target=\"_blank\"> więcej... </a>"
+    var title_length = (val.title).length;
+    if(title_length < 50) title_length = 50;
+    var cloud_content = "<b>" + val.title + "</b><br>" + val.description.substring(0,title_length) + "...<br><a href = \"https://www.facebook.com/events/" + val.event_id + "\" target=\"_blank\"> więcej... </a>"
     markers[i] = { "infowindow" : cloud_content, "lat" : val.lat, "lng" : val.lon, "picture" : picture };
     i++;
   });
@@ -50,5 +51,31 @@ $.getJSON( "/markers.json", function( data ) {
 });
 
 /* ---- Date pickers ---- */
+  function setCurrentDate(element){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
 
-$('.search_datepicker').fdatepicker('show')
+    var yyyy = today.getFullYear();
+    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} var today = dd+'/'+mm+'/'+yyyy;
+    element.value = today;
+    element.val(today);
+    console.log("date = " + today);
+  }
+  
+  setCurrentDate($('#search-date'));
+  var nowTemp = new Date();
+  var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+  $('#search-date').fdatepicker({
+    onRender: function (date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        },
+    format: 'dd/mm/yyyy',
+    closeButton: false});
+
+
+  // $('#search-date').fdatepicker().on('show', 
+  //   function(ev){
+  //     console.log("Hello");
+  //     $('#search-date').fdatepicker('place');
+  //   });

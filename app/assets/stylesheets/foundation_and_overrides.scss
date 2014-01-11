@@ -797,20 +797,20 @@
  $section-function-factor: 10%;
 
 // These style the titles
-// $section-title-color: #333;
+ $section-title-color: #fff;
  $section-title-bg: #37B7EE;
 // $section-title-bg-active: darken($section-title-bg, $section-function-factor);
  $section-title-bg-active-tabs: #1795E8;
 
 // Want to control border size, here ya go!
-// $section-border-size: 1px;
+ $section-border-size: 0px;
 // $section-border-style: solid;
 // $section-border-color: #ccc;
 
 // Control the color of the background and some size options
 $section-content-bg: #1795E8;
 // $section-vertical-nav-min-width: emCalc(200px);
-// $section-bottom-margin: emCalc(20px);
+ $section-bottom-margin: emCalc(0px);
 
 //
 // Side Nav Variables

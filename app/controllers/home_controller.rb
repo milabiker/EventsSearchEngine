@@ -22,7 +22,7 @@ class HomeController < ApplicationController
         @markers = Event.where(category_id: search_category)
         
         #markers filtering by distance from point
-        if (search_lat != nil) && (search_lon != nil) & (search_distance != nil)
+        if (search_lat != nil) && (search_lon != nil) && (search_distance != nil)
           filtered_markers = []
 
           @markers.each do |marker|
@@ -50,13 +50,19 @@ class HomeController < ApplicationController
 
   def search
     category_id = params[:category]
-    lat = 51.75424
-    lon = 19.398193
-    distance = 120
+    distance = params[:search_range].to_i
+
+    address = params[:search_address][0]
+    request_url = URI.escape("http://maps.googleapis.com/maps/api/geocode/json?address=#{address}&sensor=true")
+    address_results = JSON.parse(open(request_url).read)
+
+    puts "---------- GEOCODER ----------"
+    puts request_url
+    puts address_results['results'][0]['geometry']['location']['lat']
 
     session[:search_category] = category_id
-    session[:search_lat] = lat
-    session[:search_lon] = lon
+    session[:search_lat] = address_results['results'][0]['geometry']['location']['lat']
+    session[:search_lon] = address_results['results'][0]['geometry']['location']['lng']
     session[:search_distance] = distance
 
     redirect_to "/home/map/"
@@ -116,6 +122,8 @@ class HomeController < ApplicationController
     c = 2 * Math.atan2( Math.sqrt(a), Math.sqrt(1-a))
 
     dKm = Rkm * c
+    puts "---- DISTANCE ----"
+    puts dKm
 
     if dKm > distance
       return false
