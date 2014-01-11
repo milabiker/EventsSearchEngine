@@ -22,6 +22,7 @@ gem 'foundation-datetimepicker-rails'
 gem 'gmaps4rails'
 gem 'protected_attributes'
 gem 'sqlite3', '1.3.8'
+gem 'geocoder'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

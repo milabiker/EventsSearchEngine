@@ -48,6 +48,7 @@ GEM
       multipart-post (~> 1.2.0)
     foundation-datetimepicker-rails (0.1.2)
     fssm (0.2.10)
+    geocoder (1.1.8)
     gmaps4rails (2.1.1)
     hashie (2.0.5)
     hike (1.2.3)
@@ -145,6 +146,7 @@ DEPENDENCIES
   coffee-rails (= 4.0.1)
   compass-rails (~> 2.0.alpha.0)
   foundation-datetimepicker-rails
+  geocoder
   gmaps4rails
   jbuilder (= 1.0.2)
   jquery-rails (= 3.0.4)
