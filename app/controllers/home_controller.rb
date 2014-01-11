@@ -51,7 +51,7 @@ class HomeController < ApplicationController
     require 'geocoder'
 
     category_id = params[:category]
-    distance = params[:search_range].to_i
+    distance = params[:range][0].to_i
 
     address = params[:search_address][0]
 

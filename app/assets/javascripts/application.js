@@ -13,10 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require foundation-datepicker
 //= require_tree .
 //= require foundation
 //= require underscore-min
 //= require gmaps/google
+
+
 $(function(){
 	$(document).foundation();
 	

@@ -59,8 +59,34 @@ $.getJSON( "/markers.json", function( data ) {
   });
 
   showMap(markers);
-
-  $('#search_range_slider').change(function(){
-    $('#range_label').text(this.value);
-  })
 });
+
+/* ---- Date pickers ---- */
+  function setCurrentDate(element){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+    var yyyy = today.getFullYear();
+    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} var today = dd+'/'+mm+'/'+yyyy;
+    element.value = today;
+    element.val(today);
+    console.log("date = " + today);
+  }
+  
+  setCurrentDate($('#search-date'));
+  var nowTemp = new Date();
+  var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+  $('#search-date').fdatepicker({
+    onRender: function (date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        },
+    format: 'dd/mm/yyyy',
+    closeButton: false});
+
+
+  // $('#search-date').fdatepicker().on('show', 
+  //   function(ev){
+  //     console.log("Hello");
+  //     $('#search-date').fdatepicker('place');
+  //   });
