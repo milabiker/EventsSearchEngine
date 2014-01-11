@@ -48,22 +48,40 @@ class HomeController < ApplicationController
   end
 
   def search
+    require 'geocoder'
+
     category_id = params[:category]
     distance = params[:search_range].to_i
 
     address = params[:search_address][0]
 
-    request_url = URI.escape("http://maps.googleapis.com/maps/api/geocode/json?address=#{address}&sensor=true")
-    address_results = JSON.parse(open(request_url).read)
     if (address!="")
-      puts "---------- GEOCODER ----------"
-      puts request_url
-      puts address_results['results'][0]['geometry']['location']['lat']
+      request_url = URI.escape("http://maps.googleapis.com/maps/api/geocode/json?address=#{address}&sensor=true")
+      address_results = JSON.parse(open(request_url).read)
 
-      session[:search_category] = category_id
-      session[:search_lat] = address_results['results'][0]['geometry']['location']['lat']
-      session[:search_lon] = address_results['results'][0]['geometry']['location']['lng']
-      session[:search_distance] = distance
+      puts "--- GEOC TEST ----"
+      city = request.ip
+      puts city
+
+      if(address_results['status'] == 'OK')
+        puts "---------- GEOCODER ----------"
+        puts request_url
+        puts address_results['results'][0]['geometry']['location']['lat']
+
+        session[:search_category] = category_id
+        session[:search_lat] = address_results['results'][0]['geometry']['location']['lat']
+        session[:search_lon] = address_results['results'][0]['geometry']['location']['lng']
+        session[:search_distance] = distance
+      else
+        flash[:error] = "Address not found!"
+        session[:search_lat] = nil
+        session[:search_lon] = nil
+        session[:search_distance] = nil
+      end
+    else
+      session[:search_lat] = nil
+      session[:search_lon] = nil
+      session[:search_distance] = nil
     end
     redirect_to "/home/map/"
   end

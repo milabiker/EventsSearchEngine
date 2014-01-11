@@ -3,12 +3,19 @@
     </script>
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 <script type="text/javascript" src="/assets/underscore-min.js"></script>
+<script>
+  var LAT = <%= session[:search_lat] %>;
+  var LON = <%= session[:search_lon] %>;
+</script>
 
 
 <div class="section-container auto" data-section>
   <section class="active">
     <p class="title" data-section-title><a href="#panel1">Map</a></p>
     <div class="content" data-section-content>
+      <% if flash[:error] %>
+        <div class="geo-error"><%= flash[:error] %></div>
+      <% end %>
       <div id='map' data-section-content> </div>
     </div>
   </section>

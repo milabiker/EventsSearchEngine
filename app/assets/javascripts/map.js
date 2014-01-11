@@ -4,7 +4,18 @@ function showMap(markers_data) {
     markers = handler.addMarkers(markers_data);
     //handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
-    handler.map.centerOn( {lat: 51.75424, lng: 19.398193} )
+
+    if(typeof LAT == "undefined")
+    {
+      LAT = 51.75424;
+    }
+
+    if(typeof LON == "undefined")
+    {
+      LON = 19.398193;
+    }
+    
+    handler.map.centerOn( {lat: LAT, lng: LON} )
   });
 }
 
