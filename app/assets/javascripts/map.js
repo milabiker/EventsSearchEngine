@@ -90,3 +90,6 @@ $.getJSON( "/markers.json", function( data ) {
   //     console.log("Hello");
   //     $('#search-date').fdatepicker('place');
   //   });
+  $(".close-btn").click(function(){
+    $('.geo-error').hide();
+  });

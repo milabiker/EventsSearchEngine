@@ -42,13 +42,34 @@ body{
 
 
 .geo-error {
-	width: 300px;
-	height: 20px;
-	margin:auto;
-	margin-bottom: 20px;
+	width: 100%;
+	height: 100%;
 	color:white;
 	text-align: center;
-	background-color:#FC5349;
+	background-color:rgba(0,0,0,0.4);
+	position:absolute;
+	top:0%;
+	z-index:9999;
+}
+.geo-error .message{
+	margin:auto;
+	width: 230px;
+	height: auto;
+	background-color: rgba(255,0,0,0.7);
+	position:relative; top:25%;
+}
+.message p{
+	padding: 10px;
+}
+.geo-error .close-btn{
+	width: 15px;
+	height:15px;
+	color: white;
+	float:right;
+}
+.close-btn:hover{
+	background-color:rgba(0,0,0,0.5);
+	cursor:pointer;
 }
 
 section .title {
